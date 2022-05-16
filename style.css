@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Serif&display=swap");
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: black;
+    font-size: 18px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#title-box {
+    font-family: "Roboto Serif", sans-serif;
+    height: 100vh;
+    width: 900px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#title-box h1 {
+    font-size: 20px;
+    font-weight: 400;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+#title-box h1:hover {
+    font-weight: 600;
+}
+#register {
+    font-size: 0.3em;
+    font-weight: 400;
+}
+
+@media (max-width: 1000px) {
+    #title-box {
+        width: 100vw;
+        margin: auto;
+    }
+    
+    #title h1 {
+        font-size: 3.4em;
+        font-weight: 400;
+    }  
+}
+@media (max-width: 600px) {
+    #title h1 {
+        font-size: 1.7em;
+        font-weight: 400;
+    }   
+}
+
+/* #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
+.content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    height: 100vh;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+} */

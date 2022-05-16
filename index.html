@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<Head>
+  <title>Happy Hacking &mdash; Studio</title>
+  <meta name="description" content="Metonymie Studios: Personal website of Emiliano Martinez Luque." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/b844db911e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://images.squarespace-cdn.com/content/v1/58e9eb3737c58191617a0880/1492385127315-6V32F5OOXYBNEE2WG6KO/favicon.ico" />
+</Head>
+<body>
+  <div id="content">
+    <div id="title-box">
+      <a href="home.html">
+        <h1>Happy Hacking Studio</h1>
+      </a>
+    </div>
+  </div>
+  <script>
+    const backgroundImg = [
+      { img: 'giphy-2.gif', fontColor: '#fff' },
+      { img: '4rlzkItxtner.gif', fontColor: '#fff' },
+      { img: '101417.gif', fontColor: '#fff' },
+      { img: 'HeavyYawningEchidna-size_restricted.gif', fontColor: '#fff' },
+      { img: 'Green-waterfalls.gif', fontColor: '#fff' },
+      { img: 'Ii5.gif', fontColor: '#fff' },
+      { img: 'fish.gif', fontColor: '#fff' },
+      { img: 'hanfgif.gif', fontColor: '#fff' },
+      { img: 'drugs.gif', fontColor: '#fff' },
+      { img: 'night-milky-way.gif', fontColor: '#fff' },
+    ]
+    let timerID;
+    let counter = 0;
+    let index = 0;
+    let back = 0;
+    let item = document.querySelector("body");
+    let h1 = document.querySelector("h1");
+    let pressHoldEvent = new CustomEvent("pressHold");
+    let pressHoldDuration = 50;
+    item.style.setProperty("color", backgroundImg[back].fontColor);
+    item.style.setProperty("background", `url('./${backgroundImg[back].img}') no-repeat center center fixed`);
+    item.style.setProperty("-webkit-background-size", "cover");
+    item.style.setProperty("-moz-background-size", "cover");
+    item.style.setProperty("-o-background-size", "cover");
+    item.style.setProperty("background-size", "cover");
+    item.addEventListener("mouseup", notPressingDown, false);
+    item.addEventListener("pressHold", doSomething, false);
+
+    function pressingDown(e) {
+      requestAnimationFrame(timer);
+      e.preventDefault();
+      console.log("Pressing!");
+    }
+
+    function notPressingDown(e) {
+      cancelAnimationFrame(timerID);
+      counter = 0;
+      index = Math.floor(Math.random() * backgroundImg.length)
+      back < (backgroundImg.length - 1) ? back++ : back = 0
+      item.style.setProperty("color", backgroundImg[back].fontColor);
+      item.style.setProperty("background", `url('./${backgroundImg[back].img}') no-repeat center center fixed`);
+      item.style.setProperty("-webkit-background-size", "cover");
+      item.style.setProperty("-moz-background-size", "cover");
+      item.style.setProperty("-o-background-size", "cover");
+      item.style.setProperty("background-size", "cover");
+      console.log("Not pressing!");
+    }
+
+    function timer() {
+      console.log("Timer tick!");
+      if (counter < pressHoldDuration) {
+        timerID = requestAnimationFrame(timer);
+        counter++;
+        item.style.setProperty("color", backgroundImg[index].fontColor);
+        item.style.setProperty("background", `url('./${backgroundImg[index].img}') no-repeat center center fixed`);
+        item.style.setProperty("-webkit-background-size", "cover");
+        item.style.setProperty("-moz-background-size", "cover");
+        item.style.setProperty("-o-background-size", "cover");
+        item.style.setProperty("background-size", "cover");
+      } else {
+        console.log("Press threshold reached!");
+        item.dispatchEvent(pressHoldEvent);
+      }
+    }
+
+    function doSomething(e) {
+      console.log("pressHold event fired!");
+    }
+  </script>
+</body>
+
+</html>
